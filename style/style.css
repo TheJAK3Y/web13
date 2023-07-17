@@ -1,4 +1,309 @@
-body {
-    background-color: black;
-    color: pink;
+/* Reset default browser styles */
+html, body, main, section, aside, footer{
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
 }
+
+/* The side navigation menu */
+.navbar {
+  margin: 0;
+  padding: 0;
+  background-color: #212020;
+  color: #fff;
+  width: 330px;
+  height: 100vh;
+  text-align: center;
+  position: fixed;
+  overflow: auto;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* navbar links */
+.navbar a {
+  display: flex;
+  color: white;
+  padding: 22px;
+  text-decoration: none;
+  position: relative;
+  left: 30px;
+  text-align: right;
+}
+
+/* navbar link hover animation */
+.navbar a::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background-color: #a7a6a6;
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform .4s ease-in-out;
+}
+
+/* Links on mouse-over */
+.navbar a:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+/* Links on mouse-over */
+.navbar a:hover:not(.active) {
+  color: white;
+}
+
+/* Main content styles */
+.main-content {
+  margin-left: 330px;
+  padding: 1px 16px;
+  background-color: black; 
+  color: white;
+}
+
+/* Set styles for the sections */
+.section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 25px;
+}
+
+/* Set styles for images within div elements inside sections */
+section > div img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Set styles for h1*/
+.section h1 {
+  margin-bottom: 10px;
+  font-size: 65px;
+  text-align: center;
+}
+
+/* Set styles for h2*/
+.section h2 {
+  margin-bottom: 10px;
+  font-size: 40px;
+  text-align: left;
+  padding-left: 20px;
+}
+
+/* Set styles for h3*/
+.section h3 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  text-align: left;
+  padding-left: 20px;
+}
+
+/* Set styles for h4*/
+.section h4 {
+  margin-bottom: 10px;
+  font-size: 21px;
+  text-align: left;
+  font-weight: lighter;
+  padding-left: 20px;
+}
+
+/* Every odd container is in main has items in row-reverse so I can achieve the zig-zag layout*/
+.zigzag :nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
+/* Set styles for zigzag-layout content*/
+.zigzag {
+  background-color: black;
+  color: white;
+  margin-left: 330px;
+  padding: 1px 16px;
+}
+
+/* Set styles for the carousel container */
+.carousel {
+  height: 100vh; 
+  overflow: hidden;
+  position: relative;
+  background-color: black;
+}
+
+/* Set styles for each carousel slide */
+.carousel-slide {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: carouselAnimation 15s infinite; /* Apply the carousel animation with a duration of 15 seconds and infinite repetition */
+  position: absolute; /* Initially hide the slide by setting its opacity to 0 */
+  opacity: 0; 
+}
+
+/* Set styles for the first carousel slide */
+.carousel-slide:nth-child(1) {
+  background-image: url(../media/jonesy7.JPG); /* Set the background image for the first slide */
+  animation-delay: 0s;         /* Set the animation delay to 0 seconds for the first slide */
+  z-index: 1;                  /* Set a higher z-index to bring the first slide to the front */
+  opacity: 1;                  /* Set the opacity of the first slide to 1 to make it visible */
+}
+
+/* Set styles for the second carousel slide */
+.carousel-slide:nth-child(2) {
+  background-image: url(../media/jonesy4.JPG);
+  animation-delay: 5s; 
+  z-index: 0;                  /* Set a lower z-index for the second slide */
+}
+
+/* Set styles for the third carousel slide */
+.carousel-slide:nth-child(3) {
+  background-image: url(../media/ritchie4.JPG);
+  animation-delay: 10s; 
+  z-index: 0; 
+}
+
+/* Define the keyframe animation for the carousel */
+@keyframes carouselAnimation {
+  0% { opacity: 0; }           /* At 0% of the animation, set the opacity to 0 to hide the slide */
+  20% { opacity: 1; }          /* At 20% of the animation, set the opacity to 1 to show the slide */
+  33% { opacity: 1; }       /* At 33% of the animation, keep the opacity at 1 */
+  53% { opacity: 0; }       /* At 53% of the animation, set the opacity back to 0 to hide the slide */
+  100% { opacity: 0; }         /* At 100% of the animation, keep the opacity at 0 */
+}
+
+/* Styles for gallery */
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Three equal columns */
+.column {
+  -ms-flex: 33.33%;
+  flex: 33.33%;
+  max-width: 33.33%;
+  padding: 0;
+}
+
+/* Set styles for images within column elements */
+.column img {
+  display: block;               
+  margin: 8px auto;                 
+  max-width: calc(100% - 16px);     /* Set the maximum width of the image to 100% of the container width minus 16px to account for the margin */
+  height: auto;                     /* Maintain the image's aspect ratio by adjusting its height automatically */
+}
+
+/* Set Footer styles */
+.footer {
+  background-color: #CFCCC8;
+  padding: 30px 0;
+  text-align: center;
+}
+
+/* Set style for icons */
+.footer .container a {
+  color: gray;
+  transition: 0.5s;
+}
+
+/* Set hover colour */
+.footer .container a:hover {
+  color: #000;
+}
+
+/* Set style of icon for positioning */
+.footer .container ul li {
+  display: inline-block;
+  margin: 0 30px;
+}
+
+/* Set icon size */
+.footer .container a i {
+  font-size: 2em;
+  margin: 0 1%;
+}
+
+
+/* Media queries for responsiveness */
+
+/* Responsive layout - makes a two column-layout instead of three columns */
+@media screen and (max-width: 1200px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* If the screen is less than 1000px, the navbar will go to the top*/
+@media screen and (max-width: 1000px) {
+  .navbar {
+    width: 100%; 
+    height: auto;
+    position: relative;
+    font-size: 15px;
+  }
+  .navbar img {
+    float: left;
+    height: 61px;
+  }
+  .navbar a { float: left; }
+  .main-content { margin-left: 0; } /* Set the left margin to 0 to reajust content */
+  .zigzag { margin-left: 0; }
+}
+
+/* If the screen is less than 900px then flexbox layout will be set to a column*/
+@media screen and (max-width: 900px) {
+  .section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .content {
+    flex-basis: 100%;
+  }
+
+  section > div {
+    flex-basis: 100%;
+  }
+
+  .zigzag :nth-child(2n) {
+    flex-direction: column;
+  }
+
+}
+
+/*  If the screen is less than 600px, the two columns stack on top of each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+/* If the screen is less than 400px the top navigation will display the bar vertically */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+
+
+
+
+
+
+
